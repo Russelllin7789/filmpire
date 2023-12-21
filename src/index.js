@@ -1,12 +1,14 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import React from "react";
-// import ReactDom from "react-dom";
-import { createRoot } from "react-dom/client";
+import ReactDom from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import App from "./components/App";
 
-const container = document.getElementById("root");
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
-root.render(<App />);
-
-// ReactDom.render(<App />, document.getElementById("root"));
+ReactDom.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);

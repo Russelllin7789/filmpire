@@ -17,7 +17,10 @@ module.exports = {
     },
   ],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 7,
     sourceType: "module",
   },
   rules: {
