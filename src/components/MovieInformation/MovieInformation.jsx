@@ -27,11 +27,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 import genresIcons from "../../assets/genres";
+import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 import { useGetMovieQuery } from "../../services/TMDB";
 import useStyles from "./styles";
 
 const MovieInformation = () => {
-  console.log("Movie");
+  const dispatch = useDispatch();
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
   const classes = useStyles();
@@ -89,7 +90,7 @@ const MovieInformation = () => {
               className={classes.links}
               key={genre.name}
               to="/"
-              onClick={() => {}}
+              onClick={() => dispatch(selectGenreOrCategory(genre.id))}
             >
               <img
                 src={genresIcons[genre.name.toLowerCase()]}
