@@ -26,6 +26,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
+import genresIcons from "../../assets/genres";
 import { useGetMovieQuery } from "../../services/TMDB";
 import useStyles from "./styles";
 
@@ -67,7 +68,39 @@ const MovieInformation = () => {
         <Grid item className={classes.containerSpaceAround}>
           <Box display="flex" align="center">
             <Rating readOnly value={data.vote_average / 2} />
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+              style={{ marginLeft: "10px" }}
+            >
+              {data?.vote_average} / 10
+            </Typography>
           </Box>
+          <Typography variant="h6" align="center" gutterBottom>
+            {data?.runtime}min{" "}
+            {data?.spoken_languages.length > 0
+              ? `/ ${data?.spoken_languages[0].name}`
+              : ""}
+          </Typography>
+        </Grid>
+        <Grid item className={classes.genresContainer}>
+          {data?.genres?.map((genre) => (
+            <Link
+              className={classes.links}
+              key={genre.name}
+              to="/"
+              onClick={() => {}}
+            >
+              <img
+                src={genresIcons[genre.name.toLowerCase()]}
+                className={classes.genreImage}
+                height={30}
+              />
+              <Typography color="textPrimary" variant="subtitle1">
+                {genre?.name}
+              </Typography>
+            </Link>
+          ))}
         </Grid>
       </Grid>
     </Grid>
