@@ -40,6 +40,7 @@ export default makeStyles((theme) => ({
   links: {
     display: "flex",
     justifyContent: "center",
+    textDecoration: "none",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       padding: "0.5rem 1rem",
@@ -51,5 +52,13 @@ export default makeStyles((theme) => ({
     height: "8em",
     objectFit: "cover",
     borderRadius: "10px",
+  },
+  buttonsContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
 }));
