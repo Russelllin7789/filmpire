@@ -48,7 +48,6 @@ const Sidebar = ({ setMobileOpen }) => {
   const dispatch = useDispatch();
 
   const { data, isFetching } = useGetGenresQuery();
-  // console.log("data:", data);
 
   return (
     <>
