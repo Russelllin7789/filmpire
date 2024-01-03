@@ -26,13 +26,6 @@ const categories = [
   { label: "Upcoming", value: "upcoming" },
 ];
 
-// const demoCategories = [
-//   { label: "Comedy", value: "comedy" },
-//   { label: "Action", value: "action" },
-//   { label: "Horror", value: "horror" },
-//   { label: "Animation", value: "animation" },
-// ];
-
 const redLogo =
   "https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png";
 
@@ -48,6 +41,10 @@ const Sidebar = ({ setMobileOpen }) => {
   const dispatch = useDispatch();
 
   const { data, isFetching } = useGetGenresQuery();
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [genreIdOrCategoryName]);
 
   return (
     <>
@@ -70,7 +67,7 @@ const Sidebar = ({ setMobileOpen }) => {
               <ListItemIcon>
                 <img
                   src={genresIcons[label.toLowerCase()]}
-                  className={classes.genreImages}
+                  className={classes.genreImage}
                   height={30}
                 />
               </ListItemIcon>
@@ -96,7 +93,7 @@ const Sidebar = ({ setMobileOpen }) => {
                 <ListItemIcon>
                   <img
                     src={genresIcons[name.toLowerCase()]}
-                    className={classes.genreImages}
+                    className={classes.genreImage}
                     height={30}
                   />
                 </ListItemIcon>
