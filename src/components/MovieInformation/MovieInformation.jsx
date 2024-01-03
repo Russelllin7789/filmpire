@@ -64,9 +64,15 @@ const MovieInformation = () => {
 
   useEffect(() => {
     setIsMovieFavorited(
-      favoriteMovies?.result?.find((movie) => movie?.id === data?.id)
+      !!favoriteMovies?.results?.find((movie) => movie?.id === data?.id)
     );
   }, [favoriteMovies, data]);
+
+  useEffect(() => {
+    setIsMovieWatchlisted(
+      !!watchlistMovies?.results?.find((movie) => movie?.id === data?.id)
+    );
+  }, [watchlistMovies, data]);
 
   const addToFavorites = async () => {
     await axios.post(
