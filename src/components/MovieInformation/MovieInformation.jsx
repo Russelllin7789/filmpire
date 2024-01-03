@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Typography,
@@ -52,9 +52,21 @@ const MovieInformation = () => {
     sessionId: localStorage.getItem("session_id"),
     page: 1,
   });
+  const { data: watchlistMovies } = useGetListQuery({
+    listName: "watchlist/movies",
+    accountId: user.id,
+    sessionId: localStorage.getItem("session_id"),
+    page: 1,
+  });
   const { data, isFetching, error } = useGetMovieQuery(id);
   const { data: recommendations, isFetching: isRecommendationsFetching } =
     useGetRecommendationsQuery({ list: "recommendations", movie_id: id });
+
+  useEffect(() => {
+    setIsMovieFavorited(
+      favoriteMovies?.result?.find((movie) => movie?.id === data?.id)
+    );
+  }, [favoriteMovies, data]);
 
   const addToFavorites = async () => {
     await axios.post(
