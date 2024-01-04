@@ -1,9 +1,10 @@
 /* eslint-disable quotes */
-import React from "react";
+import React, { useRef } from "react";
 import { CssBaseline } from "@mui/material";
 import { Route, Switch } from "react-router-dom";
 
 import useStyles from "./components/styles";
+import useAlan from "./components/Alan";
 
 import {
   Actors,
@@ -15,6 +16,10 @@ import {
 
 const App = () => {
   const classes = useStyles();
+  const alanBtnContainer = useRef();
+
+  useAlan();
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -37,6 +42,7 @@ const App = () => {
           </Route>
         </Switch>
       </main>
+      <div ref={alanBtnContainer} />
     </div>
   );
 };
