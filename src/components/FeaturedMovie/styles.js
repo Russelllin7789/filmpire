@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
     right: 0,
     height: "100%",
     width: "100%",
-    backgroundColor: "rgba(0,0,0,0.575",
+    backgroundColor: "rgba(0,0,0,0.575)",
     backgroundBlendMode: "darken",
   },
   cardContent: {
